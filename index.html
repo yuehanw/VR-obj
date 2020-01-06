@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>King of Speech - A-Frame</title>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  
+  <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <!-- added aframe annimation package script-->
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js" ></script>
+  <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>  -->
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- adding man sitting figure and curtain -->
+    <a-asset-item id="mansitting-gltf" response-type="arraybuffer" src="https://valxwz.github.io/valarvr/scene.gltf"></a-asset-item>
+  <a-asset-item id="curtain-gltf" src="https://teresasky.github.io/vr-final/stage_curtains/scene.gltf"></a-asset-item>
+   <a-asset-item id="exoItalicFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725"></a-asset-item>
+  <!-- adding theater model assets -->
+  <!--   <a-asset-item id="theater-gltf" src="https://valxwz.github.io/valarvr/model.gltf"></a-asset-item> -->
+</a-assets>
+
+       <a-entity position="4 1 -5" text-geometry="value: TED; font: #exoItalicFont; style: italic; size: 1.5; weight: bold; height: 0;"
+                  material="shader: flat; color: #e62b1e"></a-entity>
+        <a-entity position="4 1 -5" text-geometry="value: TED; font: #exoItalicFont; style: italic; size: 1.5; weight: bold; height: 0; bevelEnabled: true; bevelSize: 0.04; bevelThickness: 0.04; curveSegments: 1"
+                  material="shader: flat; color: white; transparent: true; opacity: 0.1"></a-entity>
+        <!-- Cindy's code: added "TED" logo-->
+
+ <!--        <a-entity light="color: white; intensity: 1; type: ambient;" visible=""></a-entity>
+        <a-entity light="color: white; intensity: 0.5" position="5 5 5"></a-entity> -->
+        <!-- Cindy's code: added "TED" logo-->
+
+
+<a-camera position="0.5 1.5 0.8">
+<a-cursor color="blue"></a-cursor>
+</a-camera>
+<a-entity event-set__mousedown="visible:false; position: 11 11 11">
+<a-text id="start" scale="0.15 0.15 0.15" value="Click to start your speech" position="0 1.6 0.2" color="white" visible="true" ></a-text>
+<a-entity position="-2 0.4 -1" scale="0.4, 0.5, 0.3" gltf-model="#curtain-gltf" rotation="0 -90 0" shadow >
+</a-entity>
+</a-entity>
+<!-- people and chairs -->
+<a-entity id="delayed" position="-3 0.25 -4" gltf-model="#mansitting-gltf"  scale="0.012 0.012 0.012" rotation="0 0 0" event-set__mousedown="scale: 0.015 0.015 0.015" event-set__mouseup="scale: 0.012 0.012 0.012" shadow></a-entity>
+<a-box position="-3 0.5 -4" scale="0.5 0.5 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-3 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:2;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-3 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-3 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:2;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-3 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-2 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:2;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-2 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-2 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:3;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-2 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-3 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-2 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-1 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-1 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-box position="-1 0.5 -6" scale="0.5 0.5 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-1 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="-1 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="-1 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="0 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="0 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="0 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="0 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="0 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="0 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="1 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="1 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="1 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="1 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="1 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="1 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="2 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="2 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="2 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="2 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="2 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="2 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="3 0.5 -4" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="3 0.25 -4" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="3 0.5 -6" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="3 0.25 -6" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<a-box position="3 0.5 -8" scale="0.5, 0.5, 0.5" rotation="0 0 0" color="#4CC3D9" shadow></a-box>
+<a-entity position="3 0.25 -8" gltf-model="#mansitting-gltf" animation-mixer="clip:mixamo.com; loop:4;" scale="0.012 0.012 0.012" rotation="0 0 0" shadow></a-entity>
+<!-- end speech button to show question -->
+<!-- <a-entity event-set__mousedown="visible:false; position: 11 11 11">
+<a-plane id="endSpeech" position="-1 2.3 -3.5" rotation="0 0 0" width="1.8" height="0.5" color="white" scale="1 1 1" shadow scale="0.5 0.5 0.5">
+<a-text value="Finished Speech" scale="0.7 0.7 0.7" position="-0.4 -0.12 1" color="red"></a-text>
+</a-plane>
+</a-entity> -->
+<!-- question -->
+<!-- <a-plane id="question" position="-1 2.3 -3.5" rotation="0 0 0" width="2" height="1" color="white" scale="1 1 1" shadow scale="1 1 1" visible="false"event-set__mousedown="scale: 2 2 2" event-set__mouseup="scale: 1 1 1" event-set__mouseenter="visible: true; _target: #questionContent" event-set__mouseleave="visible: false; _target: #questionContent">
+<a-text id="questionContent" value="My question is..." position="-1 0.2 0" color="red" visible="false"></a-text>
+<a-entity text-geometry="value: Question:" position="-1 0.5 0" scale="0.5 0.5 0.5" color="white" visible="false"></a-entity>
+</a-plane> -->
+<!-- original question -->
+<a-plane position="-1 2.3 -3.5" rotation="0 0 0" width="2" height="0.8" color="white" scale="1 1 1" shadow scale="1 1 1" event-set__mousedown="scale: 2 2 2" event-set__mouseup="scale: 1 1 1" event-set__mouseenter="visible: true; _target: #question" event-set__mouseleave="visible: false; _target: #question">
+<a-text id="question" value="My question is..." position="-1 0.2 0" color="red" visible="false"></a-text>
+<a-entity text-geometry="value: Question:" position="-1 0.5 0" scale="0.5 0.5 0.5" color="white" ></a-entity>
+</a-plane>
+
+<!--
+settings - Teresa
+stage -->
+<a-box position="0.5 0.2 -1.5" scale="5, 0.5, 2.5" rotation="0 0 0" color="#330c09" shadow></a-box>
+<a-cylinder position="0.5 0.45 -1.5" radius="1" height=0.01 rotation="0 0 0" color="#bf0a30" shadow></a-cylinder>
+<!-- sky -->
+<a-sky color="#181d28"></a-sky>
+<a-light type="point" color="white" position="0 4 0"></a-light>
+<a-light color="red" position="-1 1 0"></a-light>
+<a-entity light="type: spot; intensity: 0.2;"></a-entity>
+<!-- back light -->
+<a-entity light="type: directional;
+castShadow: true;
+intensity: 1;
+color: white;
+shadowCameraVisible: false;"
+position="0.5 6 -8"></a-entity>
+<!-- lighting - Yuehan -->
+<!-- not sure the light is correct  -->
+<!-- <a-entity light="type: point;
+castShadow: true;
+intensity: 3;
+distance: 500;
+color: white;
+shadowCameraVisible: false;
+decay: 2"
+position="0.5 1.8 -2"></a-entity> -->
+<!-- <a-entity light="type: point;
+castShadow: true;
+intensity: 4;
+distance: 500;
+color: white;
+shadowCameraVisible: false;
+decay: 2"
+position="-2 1.8 1"></a-entity> -->
+<!-- ground -->
+<a-plane position="0 0.25 -4" rotation="-90 0 0" width="100" height="100" color="#420c09" shadow ></a-plane>
+<!-- <a-assets>
+<img id="ground" src="woodfloor.jpg">
+</a-assets> -->
+<!-- Basic plane. -->
+<!-- <a-plane color="#CCC" height="20" width="20"></a-plane> -->
+<!-- Textured plane parallel to ground. -->
+<!-- <a-plane src="#ground" position="0 0.25 -4" rotation="-90 0 0" width="100" height="100"></a-plane> -->
+<!-- Backgound SoundEffect - Ting -->
+<a-assets>
+<audio src="https://www.pacdv.com/sounds/ambience_sounds/crowd_outside_3.wav" autoplay
+preload></audio>
+</a-assets>
+</a-scene>
+<script>
+setTimeout(function() {
+document.querySelector("#delayed").setAttribute( "animation-mixer", "clip: mixamo.com; loop: 1" );
+}, 10000);
+//   setTimeout(function() {
+//   document.querySelector("#delayed2",).setAttribute( "animation-mixer", "clip: mixamo.com; loop: 2" );
+// }, 20000);
+</script>
+</body>
+</html>
